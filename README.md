@@ -8,3 +8,5 @@ Fullstack Curso completo
 - [And extensive Guide to Web Form Usability](https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/)
 - [7Basic Best Practices for Buttons](https://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)
 - [Pagination in Web Forms](https://www.uxmatters.com/mt/archives/2010/03/pagination-in-web-forms-evaluating-the-effectiveness-of-web-forms.php)
+- [websequencediagrams](https://www.websequencediagrams.com/)
+
