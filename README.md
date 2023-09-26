@@ -13,3 +13,7 @@ Fullstack Curso completo
 - [Pagination in Web Forms](https://www.uxmatters.com/mt/archives/2010/03/pagination-in-web-forms-evaluating-the-effectiveness-of-web-forms.php)
 - [websequencediagrams](https://www.websequencediagrams.com/)
 
+### IMPORTANTE
+- [create-react-app](https://github.com/facebook/create-react-app)
+
+
