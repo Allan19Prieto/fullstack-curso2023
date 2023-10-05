@@ -64,6 +64,16 @@ setInterval(() => {
 
 // ** Componente con estado
 
+// Componente para mostrar en pantalla
+const Display = ({ counter }) => <div>{counter}</div>
+
+// Componente para los botones
+const Button = ({ handleClick, text}) => (
+  <button onClick={handleClick}>
+      {text}
+    </button>
+)
+
 const App = () => {
   // sintaxis de asignación de desestructuración
   const [ counter, setCounter ] = useState(0)
@@ -72,22 +82,18 @@ const App = () => {
   const increaseByOne = () => setCounter(counter + 1)
   const setToZero = () => setCounter(0)
 
-  // Usaremos eventos para mostrar y aumentar el cunter
+  // Usaremos eventos para mostrar y aumentar el Contador
   return (
     <>
-    <div>{counter}</div>
+    <Display counter={counter} />
     
-    <button onClick={increaseByOne}>
-      plus
-    </button>
-    <button onClick={setToZero}>
-      Start
-    </button>
+    <Button handleClick={increaseByOne}
+            text='plus' />
+    <Button handleClick={setToZero}
+            text='minus' />
     </>
   )
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))
-
-// https://fullstackopen.com/es/part1/estado_del_componente_controladores_de_eventos#funciones-auxiliares-del-componente
 
