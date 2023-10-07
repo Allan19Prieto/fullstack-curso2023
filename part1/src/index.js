@@ -123,6 +123,7 @@ const App = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
   const [allClicks, setAll] = useState([])
+  const [value, setValue] = useState(10)
 
   const handleLeftClick = () => {
     setAll(allClicks.concat('L'))
@@ -134,6 +135,21 @@ const App = () => {
     setRight(right + 1)
   }
 
+  // Funcion que devuelve otra funcion
+  const hello = (who) => () => {
+    console.log('Hello', who)
+  }
+
+  const setToValue = (newValue) => {
+    setValue(newValue)
+  }
+
+  const Button2 = (props) => (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  )
+
   return (
     <div>
       {left}
@@ -141,6 +157,13 @@ const App = () => {
       <Button onClick={handleRightClick} text={'Right-New'}/>
       {right}
       <History allClicks={allClicks}/>
+      <button onClick={hello('Allan')}>button1</button>
+      <button onClick={hello('Jimena')}>button2</button>
+      <br/>
+      {value}
+      <button onClick={() => setToValue(1000)} >Thousand</button>
+      {value}
+      <Button2 handleClick={() => setToValue(value + 1)} text="incrementt" />
     </div>
   )
 }
