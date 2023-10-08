@@ -19,12 +19,28 @@ function Statistic({good, neutral, bad}) {
   if (all !== 0){
     return(
       <>
-        <p>{good.name} {good.value}</p>
-        <p>{neutral.name} {neutral.value}</p>
-        <p>{bad.name} {bad.value}</p>
-        <p>all {all}</p>
-        <p>avarage {(allStatistic*100)/all}%</p>
-        <p>positive {(good.value*100)/all}</p>
+        <table>
+          <tr>
+            <th>{good.name}</th>
+            <td>{good.value}</td>
+          </tr>
+          <tr>
+            <th>{neutral.name}</th>
+            <td>{neutral.value}</td>
+          </tr>
+          <tr>
+            <th>{bad.name}</th>
+            <td>{bad.value}</td>
+          </tr>
+          <tr>
+            <th>all</th>
+            <td>{(allStatistic*100)/all}%</td>
+          </tr>
+          <tr>
+            <th>positive</th>
+            <td>{(good.value*100)/all}%</td>
+          </tr>
+        </table>
       </>
     )
   }
@@ -33,10 +49,16 @@ function Statistic({good, neutral, bad}) {
   )
 }
 
-const App = () => {
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max)
+}
+
+const App = (props) => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [selected, setSelected] = useState(0)
+  let [visible, setVisible] = useState(false)
 
   const objectGood = {
     name: 'good',
@@ -64,9 +86,22 @@ const App = () => {
   const handleBad = () => {
     setBad(bad + 1)
   }
+
+  const handleRandon = () => {
+    setSelected(getRandomInt(5))
+  }
+
+  const handleVisible = () => {
+    visible = true
+    setVisible(visible)
+  }
   
   return (
     <div>
+      {props.anecdotes[selected]}
+      <br />
+      <Button handleClick={handleVisible} text={'vote'}/>
+      <Button handleClick={handleRandon} text={'next anecdote'}/>
       <Title text="give feedback" />
       <Button handleClick={handleGood} text={'good'} /> 
       <Button handleClick={hadleNeutral} text={'neutral'} />
@@ -77,4 +112,13 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const anecdotes = [
+  'If it hurts, do it more often',
+  'Adding manpower to a late software project makes it later!',
+  'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
+  'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+  'Premature optimization is the root of all evil.',
+  'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
+]
+
+ReactDOM.render(<App anecdotes={anecdotes} />, document.getElementById('root'))
