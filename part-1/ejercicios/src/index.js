@@ -25,6 +25,20 @@ const All = ({data}) => {
   )
 }
 
+const Porcentage = (props) => {
+  if (props.data !== 0) {
+    const porcentage = (props.data*100)/props.all
+    return (
+      
+        <p>{props.name} {porcentage} %</p>
+    )
+  }
+  return (
+        <p>{props.name} {0} %</p>
+  )
+  
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -54,6 +68,8 @@ const App = () => {
       <Statistic name={'neutral'} num={neutral} />
       <Statistic name={'bad'} num={bad} />
       <All data={good+neutral+bad} />
+      <Porcentage name={'avarage'} data={(good*1)+(neutral*0)+(bad*-1)} all={good+neutral+bad} />
+      <Porcentage name={'positive'} data={good} all={good+neutral+bad} />
     </div>
   )
 }
