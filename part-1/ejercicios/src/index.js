@@ -19,6 +19,12 @@ const Statistic = (props) => {
   )
 }
 
+const All = ({data}) => {
+  return(
+    <p>all {data}</p>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -37,7 +43,6 @@ const App = () => {
     setBad(bad + 1)
   }
   
-  
   return (
     <div>
       <Title text="give feedback" />
@@ -48,6 +53,7 @@ const App = () => {
       <Statistic name={'good'} num={good} />
       <Statistic name={'neutral'} num={neutral} />
       <Statistic name={'bad'} num={bad} />
+      <All data={good+neutral+bad} />
     </div>
   )
 }
