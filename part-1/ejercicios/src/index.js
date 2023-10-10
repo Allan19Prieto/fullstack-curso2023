@@ -18,30 +18,32 @@ function Statistic({good, neutral, bad}) {
   const allStatistic = (good.value * 1 + neutral.value * 0 + bad.value * -1)
   if (all !== 0){
     return(
-      <>
+      <div>
         <table>
-          <tr>
-            <th>{good.name}</th>
-            <td>{good.value}</td>
-          </tr>
-          <tr>
-            <th>{neutral.name}</th>
-            <td>{neutral.value}</td>
-          </tr>
-          <tr>
-            <th>{bad.name}</th>
-            <td>{bad.value}</td>
-          </tr>
-          <tr>
-            <th>all</th>
-            <td>{(allStatistic*100)/all}%</td>
-          </tr>
-          <tr>
-            <th>positive</th>
-            <td>{(good.value*100)/all}%</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>{good.name}</th>
+              <td>{good.value}</td>
+            </tr>
+            <tr>
+              <th>{neutral.name}</th>
+              <td>{neutral.value}</td>
+            </tr>
+            <tr>
+              <th>{bad.name}</th>
+              <td>{bad.value}</td>
+            </tr>
+            <tr>
+              <th>all</th>
+              <td>{(allStatistic*100)/all}%</td>
+            </tr>
+            <tr>
+              <th>positive</th>
+              <td>{(good.value*100)/all}%</td>
+            </tr>
+          </tbody>
         </table>
-      </>
+      </div>
     )
   }
   return(
