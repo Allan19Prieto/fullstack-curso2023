@@ -25,22 +25,22 @@ function Statistic({good, neutral, bad}) {
               <th>{good.name}</th>
               <td>{good.value}</td>
             </tr>
-            <tr>
-              <th>{neutral.name}</th>
-              <td>{neutral.value}</td>
-            </tr>
-            <tr>
-              <th>{bad.name}</th>
-              <td>{bad.value}</td>
-            </tr>
-            <tr>
-              <th>all</th>
-              <td>{(allStatistic*100)/all}%</td>
-            </tr>
-            <tr>
-              <th>positive</th>
-              <td>{(good.value*100)/all}%</td>
-            </tr>
+          <tr>
+            <th>{neutral.name}</th>
+            <td>{neutral.value}</td>
+          </tr>
+          <tr>
+            <th>{bad.name}</th>
+            <td>{bad.value}</td>
+          </tr>
+          <tr>
+            <th>all</th>
+            <td>{(allStatistic*100)/all}%</td>
+          </tr>
+          <tr>
+            <th>positive</th>
+            <td>{(good.value*100)/all}%</td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -61,6 +61,7 @@ const App = (props) => {
   const [bad, setBad] = useState(0)
   const [selected, setSelected] = useState(0)
   let [visible, setVisible] = useState(false)
+  
 
   const objectGood = {
     name: 'good',
@@ -91,11 +92,27 @@ const App = (props) => {
 
   const handleRandon = () => {
     setSelected(getRandomInt(5))
+    setVisible(false)
   }
 
   const handleVisible = () => {
     visible = true
     setVisible(visible)
+  }
+
+  const Content = () => {
+    if (visible === true) {
+      return (
+          <>
+          <Title text="give feedback" />
+          <Button handleClick={handleGood} text={'good'} /> 
+          <Button handleClick={hadleNeutral} text={'neutral'} />
+          <Button handleClick={handleBad} text={'bad'} />
+          <Title text="statistic" />
+          <Statistic good={objectGood} neutral={objectNeutral} bad={objectBad} />
+          </>
+      )
+    }
   }
   
   return (
@@ -104,12 +121,7 @@ const App = (props) => {
       <br />
       <Button handleClick={handleVisible} text={'vote'}/>
       <Button handleClick={handleRandon} text={'next anecdote'}/>
-      <Title text="give feedback" />
-      <Button handleClick={handleGood} text={'good'} /> 
-      <Button handleClick={hadleNeutral} text={'neutral'} />
-      <Button handleClick={handleBad} text={'bad'} />
-      <Title text="statistic" />
-      <Statistic good={objectGood} neutral={objectNeutral} bad={objectBad} />
+      <Content />
     </div>
   )
 }
