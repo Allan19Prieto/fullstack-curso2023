@@ -55,13 +55,17 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
 
+const puntos = new Uint8Array(6);
+const copy = { ...puntos }
+
 const App = (props) => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const [selected, setSelected] = useState(0)
   let [visible, setVisible] = useState(false)
-  
+
+  const posicion = anecdotes.indexOf(props.anecdotes[selected])
 
   const objectGood = {
     name: 'good',
@@ -79,14 +83,17 @@ const App = (props) => {
   }
 
   const handleGood = () => {
+    copy[posicion] += 1
     setGood(good + 1)
   } 
 
   const hadleNeutral = () => {
+    copy[posicion] += 1
     setNeutral(neutral + 1)
   }
 
   const handleBad = () => {
+    copy[posicion] += 1
     setBad(bad + 1)
   }
 
@@ -114,14 +121,18 @@ const App = (props) => {
       )
     }
   }
-  
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {props.anecdotes[selected]}
-      <br />
+      <p>has {copy[posicion]} votes</p>
+
       <Button handleClick={handleVisible} text={'vote'}/>
       <Button handleClick={handleRandon} text={'next anecdote'}/>
       <Content />
+      <h1>Anecdote whit most votes</h1>
+     
     </div>
   )
 }
