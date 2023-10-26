@@ -1,6 +1,8 @@
 var animals = [
     { name: 'FluffyKins', species: 'rabbit' },
-    { name: 'Caro' , species: 'dog' }
+    { name: 'Caro' , species: 'dog' },
+    { name: 'Harold' , species: 'dog' },
+    { name: 'Ursula' , species: 'cat' }
 ]
 
 var isDog = function(animal) {
