@@ -5,9 +5,7 @@ var animals = [
     { name: 'Ursula' , species: 'cat' }
 ]
 
-var names = animals.map(function(animal) {
-    return animals.name
-})
+var names = animals.map((x) => x.name) 
 
 /*
 var names = []
