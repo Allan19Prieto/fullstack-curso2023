@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Person from './components/Person'
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
@@ -28,6 +30,7 @@ const App = () => {
 
     if(addItem){
       setPersons(persons.concat(personObject))
+      setFilterName(newFilterName.concat(personObject))
       
     }else{
       alert(`${personObject.name} Ya es un nombre de la lista`); 
@@ -56,24 +59,13 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
 
-      <div>
-        filter show with <input type="text" onChange={handleFilter} />
-      </div>
+      <Filter change={handleFilter}/>
 
       <h2>add a new</h2>
-      <form onSubmit={addNewPerson}>
-        <div>
-          name: <input value={newName}
-                       onChange={handlePersonChange} />
-        </div>
-        <div>
-          number: <input value={newNumber}
-                       onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+
+      <PersonForm sub={addNewPerson} nameValue={newName} nameChange={handlePersonChange}
+                                          numberValue={newNumber} numberChange={handleNumberChange}/>
+
       <h2>Numbers</h2>
       <ul>
           {newFilterName.map(person => (
