@@ -1,8 +1,7 @@
 import React from "react";
 
 const Person = ({person}) => {
-    console.log(person.content)
-    return <div>{person.name}</div>
+    return <li>{person.name}</li>
 }
 
 export default Person

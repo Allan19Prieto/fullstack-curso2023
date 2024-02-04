@@ -3,19 +3,32 @@ import Person from './components/Person'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
-    //{ name: 'Arto Hellas' }
+    
   ]) 
   const [ newName, setNewName ] = useState('')
 
   const addNewPerson = (event) => {
     event.preventDefault()
+    var addItem = true;
     const personObject = {
       name: newName,
       id: persons.length + 1,
     }
 
-    setPersons(persons.concat(personObject))
+    persons.forEach(element => {
+      if (element.name === personObject.name)
+        addItem = false;
+    });
+
+    if(addItem){
+      setPersons(persons.concat(personObject))
+      
+    }else{
+      alert(`${personObject.name} Ya es un nombre de la lista`); 
+    }
+
     setNewName('')
+    
   }
 
   const handlePersonChange = (event) => {
@@ -35,11 +48,11 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <div>
+      <ul>
           {persons.map(person => (
             <Person key={person.id} person={person}/>
           ))}
-      </div>
+      </ul>
     </div>
   )
 }
