@@ -1,24 +1,36 @@
 {
-    "notes": [
-      {
-        "id": 1,
-        "content": "HTML is easy",
-        "important": true
-      },
-      {
-        "id": 2,
-        "content": "Browser can execute only JavaScript",
-        "important": false
-      },
-      {
-        "id": 3,
-        "content": "GET and POST are the most important methods of HTTP protocol",
-        "important": true
-      },
-      {
-        "id": 4,
-        "content": "POST Prueba Allan Prieto",
-        "important": true
-      }
-    ]
-  }
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": true
+    },
+    {
+      "id": "4",
+      "content": "POST Prueba Allan Prieto",
+      "important": true
+    },
+    {
+      "id": 5,
+      "content": "Nueva Prueba Ruben",
+      "date": "2024-02-14T10:19:34.313Z",
+      "important": true
+    },
+    {
+      "id": 6,
+      "content": "Jimena En camino",
+      "date": "2024-02-14T10:25:16.535Z",
+      "important": false
+    }
+  ]
+}
