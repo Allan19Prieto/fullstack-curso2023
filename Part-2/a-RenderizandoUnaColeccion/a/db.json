@@ -18,24 +18,42 @@
     {
       "id": "4",
       "content": "POST Prueba Allan Prieto",
-      "important": false
+      "important": true
     },
     {
       "id": "5",
       "content": "Nueva Prueba Ruben",
       "date": "2024-02-14T10:19:34.313Z",
-      "important": false
+      "important": true
     },
     {
       "id": "6",
       "content": "Jimena En camino",
       "date": "2024-02-14T10:25:16.535Z",
+      "important": true
+    },
+    {
+      "id": "7",
+      "content": "",
+      "date": "2024-02-14T22:29:31.071Z",
+      "important": true
+    },
+    {
+      "id": "8",
+      "content": "aaaaaaa",
+      "date": "2024-02-15T18:49:19.590Z",
       "important": false
     },
     {
-      "id": 7,
-      "content": "",
-      "date": "2024-02-14T22:29:31.071Z",
+      "id": "9",
+      "content": "Jime en el Bus",
+      "date": "2024-02-15T18:53:16.445Z",
+      "important": false
+    },
+    {
+      "id": "10",
+      "content": "Siguiente Prueba",
+      "date": "2024-02-15T19:03:45.622Z",
       "important": false
     }
   ]
