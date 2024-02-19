@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Person from './components/Person'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
+import personService from './services/persons'
 import axios from 'axios'
 
 const App = () => {
@@ -11,9 +12,9 @@ const App = () => {
   const [ newFilterName, setFilterName] = useState(persons)
 
   const hook = () => {
-      axios.get('http://localhost:3001/person').then(response => {
-          setPersons(response.data)
-          setFilterName(response.data)
+      personService.getAll().then(inicialPerson => {
+        setPersons(inicialPerson)
+        setFilterName(inicialPerson)
       })
   }
 
@@ -25,7 +26,7 @@ const App = () => {
     const personObject = {
       name: newName,
       number: newNumber,
-      id: persons.length + 1,
+      id: (persons.length + 1).toString(),
     }
 
     persons.forEach(element => {
@@ -34,8 +35,11 @@ const App = () => {
     });
 
     if(addItem){
-      setPersons(persons.concat(personObject))
-      setFilterName(newFilterName.concat(personObject))
+
+      personService.create(personObject).then(newPerson =>{
+        setPersons(persons.concat(newPerson))
+        setFilterName(newFilterName.concat(newPerson))
+      })
       
     }else{
       alert(`${personObject.name} Ya es un nombre de la lista`); 
@@ -60,6 +64,18 @@ const App = () => {
     setFilterName(filtered);
   }
 
+  const toggledelete = (id) => {
+    const person = persons.find(n => n.id === id);
+    if(window.confirm(`Delete ${person.name} ?`)){
+      personService.deleted(id).then(returnetPerson => {
+        hook()
+        alert(
+          `'${person.name} eliminado : ${returnetPerson} '`
+          )
+      })
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -74,7 +90,7 @@ const App = () => {
       <h2>Numbers</h2>
       <ul>
           {newFilterName.map(person => (
-            <Person key={person.id} person={person}/>
+            <Person key={person.id} person={person} toggleDelete={() => toggledelete(person.id)}/>
           ))}
       </ul>
     </div>
