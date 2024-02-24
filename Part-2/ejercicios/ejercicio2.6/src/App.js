@@ -42,8 +42,19 @@ const App = () => {
       })
       
     }else{
-      alert(`${personObject.name} Ya es un nombre de la lista`); 
+      if(window.confirm(`${personObject.name} added to the phoneboock, replace the old number with a new one?`)){
+        const per = persons.find( n => n.name === personObject.name)
+        const data = { ...per }
+        data.number = personObject.number
+
+        personService.update(per.id, data).then(returnPrson => {
+          setPersons(persons.map(n => n.id !== per.id ?  n : returnPrson))
+          setFilterName(newFilterName.map(n => n.id !== per.id ? n : returnPrson))
+        }) 
+      }
     }
+    console.log(persons)
+    console.log(newFilterName)
 
     setNewName('')
     setNewNumber('')
